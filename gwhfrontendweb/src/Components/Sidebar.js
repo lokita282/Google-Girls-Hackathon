@@ -23,17 +23,33 @@ import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import '../Assets/Sidebar.css'
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
-import Zoom from '@mui/material/Zoom';
-import EditIcon from '@mui/icons-material/Edit';
-import UpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { green } from '@mui/material/colors';
 import { useTheme } from '@mui/material/styles';
+import { Button, Popover } from '@mui/material';
+import googleassistant from '../Images/googleassistant.png'
+import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
-    const { window } = props;
+
+    const commands = [
+        {
+            command: 'Search *',
+            callback: (searchSite) => {
+                window.open(`https://www.google.com/search?q=` + searchSite)
+            }
+        }
+    ]
+    const {
+        transcript,
+        listening,
+        resetTranscript,
+        browserSupportsSpeechRecognition
+    } = useSpeechRecognition({ commands });
+
+    const { windows } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const { children } = props;
     const [value, setValue] = React.useState(0);
@@ -41,68 +57,22 @@ function ResponsiveDrawer(props) {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-    const commands = [
-        {
-            command: 'Search *',
-            callback: (searchSite) => {
-                window.open(`https://www.google.com/search?q=${searchSite}`)
-            }
-        },
-        {
-            command: 'search *',
-            callback: (searchSite) => {
-                window.open('https://www.google.com/search?q=' + searchSite)
-            }
-        }
-    ]
-    // const {
-    //     transcript,
-    //     listening,
-    //     resetTranscript,
-    //     browserSupportsSpeechRecognition
-    // } = useSpeechRecognition({ commands });
 
-    const handleChangeIndex = (index) => {
-        setValue(index);
-    };
 
     const transitionDuration = {
         enter: theme.transitions.duration.enteringScreen,
         exit: theme.transitions.duration.leavingScreen,
     };
-    const fabStyle = {
-        position: 'absolute',
-        bottom: 16,
-        right: 16,
-    };
 
-    const fabGreenStyle = {
-        color: 'common.white',
-        bgcolor: green[500],
-        '&:hover': {
-            bgcolor: green[600],
-        },
-    };
-    const fabs = [
-        {
-            color: 'primary',
-            sx: fabStyle,
-            icon: <AddIcon />,
-            label: 'Add',
-        },
-        {
-            color: 'secondary',
-            sx: fabStyle,
-            icon: <EditIcon />,
-            label: 'Edit',
-        },
-        {
-            color: 'inherit',
-            sx: { ...fabStyle, ...fabGreenStyle },
-            icon: <UpIcon />,
-            label: 'Expand',
-        },
-    ];
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    if (!browserSupportsSpeechRecognition) {
+        return <span>Browser doesn't support speech recognition.</span>;
+    }
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -152,7 +122,7 @@ function ResponsiveDrawer(props) {
         </div>
     );
 
-    const container = window !== undefined ? () => window().document.body : undefined;
+    const container = windows !== undefined ? () => windows().document.body : undefined;
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -216,28 +186,41 @@ function ResponsiveDrawer(props) {
             >
                 <Toolbar />
                 {children}
-                {fabs.map((fab, index) => (
-                    <Zoom
-                        key={fab.color}
-                        in={value === index}
-                        timeout={transitionDuration}
-                        style={{
-                            transitionDelay: `${value === index ? transitionDuration.exit : 0}ms`,
-                        }}
-                        unmountOnExit
-                    >
-                        <Fab sx={fab.sx} aria-label={fab.label} color={fab.color}>
-                            {fab.icon}
-                        </Fab>
-                    </Zoom>
-                ))}
+                <PopupState variant="popover" popupId="demo-popup-popover" onClick={SpeechRecognition.startListening}>
+                    {(popupState) => (
+                        <div onClick={SpeechRecognition.startListening}>
+                            <Fab sx={{
+                                position: 'absolute',
+                                bottom: 16,
+                                right: 16,
+                            }} aria-label='ADD' {...bindTrigger(popupState)}>
+
+                                <img src={googleassistant} width={70} height={70} onClick={SpeechRecognition.startListening} />
+                            </Fab>
+                            <Popover
+                                {...bindPopover(popupState)}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'center',
+                                }}
+                                transformOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'center',
+                                }}
+                            >
+                                <Typography sx={{ p: 2 }}>{transcript ? transcript : 'Tell us your problem'}</Typography>
+                            </Popover>
+                        </div>
+                    )}
+                </PopupState>
+
             </Box>
         </Box>
     );
 }
 
 ResponsiveDrawer.propTypes = {
-    window: PropTypes.func,
+    windows: PropTypes.func,
 };
 
 export default ResponsiveDrawer;
