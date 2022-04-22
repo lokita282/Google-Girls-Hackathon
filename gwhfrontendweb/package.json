@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@devexpress/dx-react-scheduler-material-ui": "^3.0.2",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@material-ui/core": "^5.0.0-beta.5",

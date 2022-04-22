@@ -88,7 +88,7 @@ function ResponsiveDrawer(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
-
+    
   const drawer = (
     <div>
       <Box className="logoBox">
@@ -228,37 +228,90 @@ function ResponsiveDrawer(props) {
                   bottom: 16,
                   right: 16,
                 }}
-                aria-label="ADD"
-                {...bindTrigger(popupState)}
-              >
-                <img
-                  src={googleassistant}
-                  width={70}
-                  height={70}
-                  onClick={SpeechRecognition.startListening}
-                />
-              </Fab>
-              <Popover
-                {...bindPopover(popupState)}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'center',
-                }}
-                transformOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'center',
-                }}
-              >
-                <Typography sx={{ p: 2 }}>
-                  {transcript ? transcript : 'Tell us your problem'}
-                </Typography>
-              </Popover>
-            </div>
-          )}
-        </PopupState>
-      </Box>
-    </Box>
-  )
+            >
+                <Toolbar>
+                    <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        edge="start"
+                        onClick={handleDrawerToggle}
+                        sx={{ mr: 2, display: { sm: 'none' } }}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h6" noWrap component="div">
+                        SeniorSmart
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+            <Box
+                component="nav"
+                sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+                aria-label="mailbox folders"
+            >
+                <Drawer
+                    container={container}
+                    variant="temporary"
+                    open={mobileOpen}
+                    onClose={handleDrawerToggle}
+                    ModalProps={{
+                        keepMounted: true,
+                    }}
+                    sx={{
+                        display: { xs: 'block', sm: 'none' },
+                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                    }}
+                >
+                    {drawer}
+                </Drawer>
+                <Drawer
+                    variant="permanent"
+                    sx={{
+                        display: { xs: 'none', sm: 'block' },
+                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                    }}
+                    open
+                >
+                    {drawer}
+                </Drawer>
+            </Box>
+            <Box
+                component="main"
+                sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` }, backgroundColor: '#E8EAED' }}
+            >
+                <Toolbar />
+                {children}
+                <PopupState variant="popover" popupId="demo-popup-popover" onClick={SpeechRecognition.startListening}>
+                    {(popupState) => (
+                        <div onClick={SpeechRecognition.startListening}>
+                            <Fab sx={{
+                                position: 'fixed',
+                                bottom: 16,
+                                right: 16,
+                            }} aria-label='ADD' {...bindTrigger(popupState)}>
+
+                                <img src={googleassistant} width={70} height={70} onClick={SpeechRecognition.startListening} />
+                            </Fab>
+                            <Popover
+                                {...bindPopover(popupState)}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'center',
+                                }}
+                                transformOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'center',
+                                }}
+                            >
+                                <Typography sx={{ p: 2 }}>{transcript ? transcript : 'Tell us your problem'}</Typography>
+                            </Popover>
+                        </div>
+                    )}
+                </PopupState>
+
+            </Box>
+        </Box>
+    );
 }
 
 ResponsiveDrawer.propTypes = {
