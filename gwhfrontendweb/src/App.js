@@ -4,6 +4,7 @@ import Dashboard from './Pages/Dashboard';
 import AppGuide from './Pages/AppGuide';
 import NewsPage from './Pages/NewsPage';
 
+
 function App() {
   return (
     <>
@@ -15,7 +16,7 @@ function App() {
         </Routes>
       </Router>
     </>
-  );
+  )
 }
 
 export default App;

@@ -31,6 +31,7 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 import { useNavigate } from "react-router";
 
 
+
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
@@ -147,7 +148,7 @@ function ResponsiveDrawer(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        SmartSenior
+                        SeniorSmart
                     </Typography>
                 </Toolbar>
             </AppBar>
