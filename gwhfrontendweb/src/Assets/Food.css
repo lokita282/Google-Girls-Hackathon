@@ -1,0 +1,30 @@
+.TextField-border-radius fieldset {
+  border-radius: 50px;
+}
+
+.MuiOutlinedInput-root {
+  background: #FFFFFF;
+  border: 1px solid #AEAEAE;
+  box-sizing: border-box;
+   border-radius: 50px !important;
+   /* padding: 20px !important */
+  width: 95%;
+   margin: 20px!important;
+
+}
+
+.Card-recipe {
+  padding-left: 40px!important;
+  margin-right: 40px!important;
+  margin-top: 20px!important;
+  display: flex;
+  flex-direction: row
+}
+
+.order-online {
+  padding-left: 40px!important;
+  margin-right: 40px!important;
+  margin-top: 20px!important;
+  display: flex;
+  flex-direction: row
+}
