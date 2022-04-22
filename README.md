@@ -28,8 +28,8 @@ Connecting with people
 
 ## Web:
 ![PHOTO-2022-04-22-12-09-03](https://user-images.githubusercontent.com/79246912/164618632-a38af151-1e21-4a79-ae1e-2f4a2df6c7ce.jpg)
-![PHOTO-2022-04-22-11-40-56](https://user-images.githubusercontent.com/79246912/164618660-40bfbd9e-eca0-4b14-a81e-01137c161df7.jpg)
 ![PHOTO-2022-04-22-11-40-36](https://user-images.githubusercontent.com/79246912/164618722-740c3179-33e3-452b-8f21-649891a1ed54.jpg)
+![PHOTO-2022-04-22-11-40-56](https://user-images.githubusercontent.com/79246912/164618660-40bfbd9e-eca0-4b14-a81e-01137c161df7.jpg)
 ![PHOTO-2022-04-22-11-35-20](https://user-images.githubusercontent.com/79246912/164618709-3afee389-7a27-4e6c-8b15-eed533672189.jpg)
 
 
