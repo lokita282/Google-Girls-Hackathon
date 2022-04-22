@@ -28,12 +28,16 @@ import { Button, Popover } from '@mui/material';
 import googleassistant from '../Images/googleassistant.png'
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import {
+  Link, useNavigate
+} from 'react-router-dom'
+// import Link from '@mui/material/Link';
 
 
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
-
+    // let nav = useNavigate()
     const commands = [
         {
             command: 'Search *',
@@ -79,48 +83,48 @@ function ResponsiveDrawer(props) {
     };
 
     const drawer = (
-        <div>
-            <Box className='logoBox'>
-                <img src={logo} className='logo' />
-            </Box>
-            <Divider />
-            <List>
-                <ListItem button>
-                    <ListItemIcon>
-                        <DashboardIcon />
-                    </ListItemIcon>
-                    <ListItemText primary='Dashboard' />
-                </ListItem>
-            </List>
-            <Divider />
-            <List>
-                <ListItem button>
-                    <ListItemIcon>
-                        <CalendarMonthIcon />
-                    </ListItemIcon>
-                    <ListItemText primary='Webinars' />
-                </ListItem>
-            </List>
-            <Divider />
-            <List>
-                <ListItem button>
-                    <ListItemIcon>
-                        <NewspaperIcon />
-                    </ListItemIcon>
-                    <ListItemText primary='News/Podcasts' />
-                </ListItem>
-            </List>
-            <Divider />
-            <List>
-                <ListItem button>
-                    <ListItemIcon>
-                        <ContactSupportIcon />
-                    </ListItemIcon>
-                    <ListItemText primary='Support' />
-                </ListItem>
-            </List>
-        </div>
-    );
+      <div>
+        <Box className="logoBox">
+          <img src={logo} className="logo" />
+        </Box>
+        <Divider />
+        <List>
+          <ListItem button>
+            <ListItemIcon>
+              <DashboardIcon />
+            </ListItemIcon>
+            <Link sx={{color: '#000', textDecoration: 'none' }} to="/dashboard"> <ListItemText primary='Dashboard' /></Link>
+          </ListItem>
+        </List>
+        <Divider />
+        <List>
+          <ListItem button>
+            <ListItemIcon>
+              <CalendarMonthIcon />
+            </ListItemIcon>
+            <ListItemText primary="Webinars" />
+          </ListItem>
+        </List>
+        <Divider />
+        <List>
+          <ListItem button>
+            <ListItemIcon>
+              <NewspaperIcon />
+            </ListItemIcon>
+            <ListItemText primary="News/Podcasts" />
+          </ListItem>
+        </List>
+        <Divider />
+        <List>
+          <ListItem button>
+            <ListItemIcon>
+              <ContactSupportIcon />
+            </ListItemIcon>
+            <ListItemText primary="Support" />
+          </ListItem>
+        </List>
+      </div>
+    )
 
     const container = windows !== undefined ? () => windows().document.body : undefined;
 
@@ -145,7 +149,7 @@ function ResponsiveDrawer(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        SmartSenior
+                        SeniorSmart
                     </Typography>
                 </Toolbar>
             </AppBar>
