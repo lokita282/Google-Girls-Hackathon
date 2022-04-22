@@ -1,4 +1,4 @@
-# Google-Girls-Hacakthon
+# Google-Girls-Hackathon
 
 ## Team Members:
 Lokita Varma\
@@ -27,10 +27,23 @@ Webinars/Sessions\
 Connecting with people
 
 ## Web:
+### Main Dashboard:
 ![PHOTO-2022-04-22-12-09-03](https://user-images.githubusercontent.com/79246912/164618632-a38af151-1e21-4a79-ae1e-2f4a2df6c7ce.jpg)
+### Daily Task Screens: 
 ![PHOTO-2022-04-22-11-40-36](https://user-images.githubusercontent.com/79246912/164618722-740c3179-33e3-452b-8f21-649891a1ed54.jpg)
 ![PHOTO-2022-04-22-11-40-56](https://user-images.githubusercontent.com/79246912/164618660-40bfbd9e-eca0-4b14-a81e-01137c161df7.jpg)
+### Technical Assistance > Food: 
+[![image.png](https://i.postimg.cc/D0f7cvPh/image.png)](https://postimg.cc/gX59zP7t)
+### Technical Assistance > Food > Order Online > Zomato: 
+[![image.png](https://i.postimg.cc/ryRBvtzH/image.png)](https://postimg.cc/s1yHWxYP)
+### Webinars, Adding events to the calendar: 
+[![image.png](https://i.postimg.cc/g0fDRrdw/image.png)](https://postimg.cc/sB47CjMy)
+### News:
 ![PHOTO-2022-04-22-11-35-20](https://user-images.githubusercontent.com/79246912/164618709-3afee389-7a27-4e6c-8b15-eed533672189.jpg)
+### Support: 
+[![image.png](https://i.postimg.cc/FR6Q0yzy/image.png)](https://postimg.cc/tZFfjVhJ)
+
+
 
 
 ## App:
