@@ -10,18 +10,23 @@ import swiggy from '../Images/swiggy.png'
 
 export default function MultiActionAreaCard() {
   return (
-    <Card sx={{ maxWidth: 425, padding: '30px 70px' }}>
+    <Card sx={{ maxwidth: '20%', padding: '30px 70px' }}>
       <CardActionArea>
-        <CardMedia component="img" image={orderOnline} alt="food" />
+        <CardMedia
+          height="180px"
+          component="img"
+          image={orderOnline}
+          alt="food"
+        />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Order Food online 
+          <Typography align="center" gutterBottom variant="h5" component="div">
+            Order Food online
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
         <Box sx={{ alignItems: 'center', width: '100%' }}>
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" sx={{ marginLeft: '25%'}}>
             <img src={zomato} />
           </Button>
           <Button size="small" color="primary">
