@@ -9,9 +9,8 @@ function Dashboard() {
     return (
         <>
             <Sidebar>
-                {/* <Tasks />
-                <TechAssistance /> */}
-                <App />
+                <Tasks />
+                <TechAssistance />
             </Sidebar>
         </>
     )

@@ -28,11 +28,13 @@ import { Button, Popover } from '@mui/material';
 import googleassistant from '../Images/googleassistant.png'
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import { useNavigate } from "react-router";
 
 
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
+    let navigate = useNavigate();
 
     const commands = [
         {
@@ -85,7 +87,7 @@ function ResponsiveDrawer(props) {
             </Box>
             <Divider />
             <List>
-                <ListItem button>
+                <ListItem button onClick={() => navigate(`/`)}>
                     <ListItemIcon>
                         <DashboardIcon />
                     </ListItemIcon>
@@ -103,11 +105,11 @@ function ResponsiveDrawer(props) {
             </List>
             <Divider />
             <List>
-                <ListItem button>
+                <ListItem button >
                     <ListItemIcon>
                         <NewspaperIcon />
                     </ListItemIcon>
-                    <ListItemText primary='News/Podcasts' />
+                    <ListItemText primary='News/Podcasts' onClick={() => navigate(`/news`)} />
                 </ListItem>
             </List>
             <Divider />
