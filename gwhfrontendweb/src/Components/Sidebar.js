@@ -97,7 +97,7 @@ function ResponsiveDrawer(props) {
             </List>
             <Divider />
             <List>
-                <ListItem button>
+                <ListItem button onClick={() => navigate(`/webinars`)}>
                     <ListItemIcon>
                         <CalendarMonthIcon />
                     </ListItemIcon>
@@ -193,7 +193,7 @@ function ResponsiveDrawer(props) {
                     {(popupState) => (
                         <div onClick={SpeechRecognition.startListening}>
                             <Fab sx={{
-                                position: 'absolute',
+                                position: 'fixed',
                                 bottom: 16,
                                 right: 16,
                             }} aria-label='ADD' {...bindTrigger(popupState)}>
