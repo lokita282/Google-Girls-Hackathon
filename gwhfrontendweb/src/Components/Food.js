@@ -9,7 +9,7 @@ import OrderOnlineCard from "../Components/OrderOnlineCard";
 const Food = () => {
   return (
     <div>
-      <div className="TextField-border-radius">
+      <div>
         <OutlinedInput
           id="input-with-icon-adornment"
           startAdornment={
@@ -18,7 +18,7 @@ const Food = () => {
             </InputAdornment>
           }
           placeholder="Search Here"
-          className=".MuiOutlinedInput-root"
+          style={{ width: '100%', borderRadius: '50px' }}
           variant="outlined"
         />
       </div>

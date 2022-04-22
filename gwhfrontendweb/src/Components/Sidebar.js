@@ -34,199 +34,119 @@ import { useNavigate } from "react-router";
 const drawerWidth = 240
 
 function ResponsiveDrawer(props) {
-  let navigate = useNavigate()
-  const commands = [
-    {
-      command: 'Search *',
-      callback: (searchSite) => {
-        window.open(`https://www.google.com/search?q=` + searchSite)
-      },
-    },
-    {
-      command: 'how to connect with Wi-Fi',
-      callback: () => {
-        navigate('/task')
-      },
-    },
-    {
-      command: 'navigate to *',
-      callback: (navigateto) => {
-        navigate(`/${navigateto}`)
-      },
-    },
-  ]
-  const {
-    transcript,
-    listening,
-    resetTranscript,
-    browserSupportsSpeechRecognition,
-  } = useSpeechRecognition({ commands })
-
-  const { windows } = props
-  const [mobileOpen, setMobileOpen] = React.useState(false)
-  const { children } = props
-  const [value, setValue] = React.useState(0)
-  const theme = useTheme()
-  const handleChange = (event, newValue) => {
-    setValue(newValue)
-  }
-
-  const transitionDuration = {
-    enter: theme.transitions.duration.enteringScreen,
-    exit: theme.transitions.duration.leavingScreen,
-  }
-
-  const [anchorEl, setAnchorEl] = React.useState(null)
-
-  if (!browserSupportsSpeechRecognition) {
-    return <span>Browser doesn't support speech recognition.</span>
-  }
-
-  const open = Boolean(anchorEl)
-  const id = open ? 'simple-popover' : undefined
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen)
-  }
-    
-  const drawer = (
-    <div>
-      <Box className="logoBox">
-        <img src={logo} className="logo" />
-      </Box>
-      <Divider />
-      <List>
-        <ListItem button>
-          <ListItemIcon>
-            <DashboardIcon />
-          </ListItemIcon>
-          {/* <Link to="/dashboard">
-              {' '} */}
-          <ListItemText
-            sx={{ color: '#000', textDecoration: 'none!important' }}
-            primary="Dashboard"
-          />
-          {/* </Link> */}
-        </ListItem>
-      </List>
-      <Divider />
-      <List>
-        <ListItem button>
-          <ListItemIcon>
-            <CalendarMonthIcon />
-          </ListItemIcon>
-          <ListItemText primary="Webinars" />
-        </ListItem>
-      </List>
-      <Divider />
-      <List>
-        <ListItem button>
-          <ListItemIcon>
-            <NewspaperIcon />
-          </ListItemIcon>
-          <ListItemText primary="News/Podcasts" />
-        </ListItem>
-      </List>
-      <Divider />
-      <List>
-        <ListItem button>
-          <ListItemIcon>
-            <ContactSupportIcon />
-          </ListItemIcon>
-          <ListItemText primary="Support" />
-        </ListItem>
-      </List>
-    </div>
-  )
-
-  const container =
-    windows !== undefined ? () => windows().document.body : undefined
-  
-  return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-        }}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            SeniorSmart
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Box
-        component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
-      >
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true,
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': {
-              boxSizing: 'border-box',
-              width: drawerWidth,
+    let navigate = useNavigate()
+    const commands = [
+        {
+            command: 'Search *',
+            callback: (searchSite) => {
+                window.open(`https://www.google.com/search?q=` + searchSite)
             },
-          }}
-        >
-          {drawer}
-        </Drawer>
-        <Drawer
-          variant="permanent"
-          sx={{
-            display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': {
-              boxSizing: 'border-box',
-              width: drawerWidth,
+        },
+        {
+            command: 'how to connect with Wi-Fi',
+            callback: () => {
+                navigate('/task')
             },
-          }}
-          open
-        >
-          {drawer}
-        </Drawer>
-      </Box>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          backgroundColor: '#E8EAED',
-        }}
-      >
-        <Toolbar />
-        {children}
-        <PopupState
-          variant="popover"
-          popupId="demo-popup-popover"
-          onClick={SpeechRecognition.startListening}
-        >
-          {(popupState) => (
-            <div onClick={SpeechRecognition.startListening}>
-              <Fab
+        },
+        {
+            command: 'navigate to *',
+            callback: (navigateto) => {
+                navigate(`/${navigateto}`)
+            },
+        },
+    ]
+    const {
+        transcript,
+        listening,
+        resetTranscript,
+        browserSupportsSpeechRecognition,
+    } = useSpeechRecognition({ commands })
+
+    const { windows } = props
+    const [mobileOpen, setMobileOpen] = React.useState(false)
+    const { children } = props
+    const [value, setValue] = React.useState(0)
+    const theme = useTheme()
+    const handleChange = (event, newValue) => {
+        setValue(newValue)
+    }
+
+    const transitionDuration = {
+        enter: theme.transitions.duration.enteringScreen,
+        exit: theme.transitions.duration.leavingScreen,
+    }
+
+    const [anchorEl, setAnchorEl] = React.useState(null)
+
+    if (!browserSupportsSpeechRecognition) {
+        return <span>Browser doesn't support speech recognition.</span>
+    }
+
+    const open = Boolean(anchorEl)
+    const id = open ? 'simple-popover' : undefined
+
+    const handleDrawerToggle = () => {
+        setMobileOpen(!mobileOpen)
+    }
+
+    const drawer = (
+        <div>
+            <Box className="logoBox">
+                <img src={logo} className="logo" />
+            </Box>
+            <Divider />
+            <List>
+                <ListItem button onClick={() => navigate('/')}>
+                    <ListItemIcon>
+                        <DashboardIcon />
+                    </ListItemIcon>
+                    <ListItemText
+                        sx={{ color: '#000', textDecoration: 'none!important' }}
+                        primary="Dashboard"
+                    />
+                </ListItem>
+            </List>
+            <Divider />
+            <List>
+                <ListItem button onClick={() => navigate('/webinars')}>
+                    <ListItemIcon>
+                        <CalendarMonthIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Webinars" />
+                </ListItem>
+            </List>
+            <Divider />
+            <List>
+                <ListItem button onClick={() => navigate('/news')}>
+                    <ListItemIcon>
+                        <NewspaperIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="News/Podcasts" />
+                </ListItem>
+            </List>
+            <Divider />
+            <List>
+                <ListItem button onClick={() => navigate('/support')}>
+                    <ListItemIcon>
+                        <ContactSupportIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Support" />
+                </ListItem>
+            </List>
+        </div>
+    )
+
+    const container =
+        windows !== undefined ? () => windows().document.body : undefined
+
+    return (
+        <Box sx={{ display: 'flex' }}>
+            <CssBaseline />
+            <AppBar
+                position="fixed"
                 sx={{
-                  position: 'absolute',
-                  bottom: 16,
-                  right: 16,
+                    width: { sm: `calc(100% - ${drawerWidth}px)` },
+                    ml: { sm: `${drawerWidth}px` },
                 }}
             >
                 <Toolbar>
@@ -259,7 +179,10 @@ function ResponsiveDrawer(props) {
                     }}
                     sx={{
                         display: { xs: 'block', sm: 'none' },
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                        '& .MuiDrawer-paper': {
+                            boxSizing: 'border-box',
+                            width: drawerWidth,
+                        },
                     }}
                 >
                     {drawer}
@@ -268,7 +191,10 @@ function ResponsiveDrawer(props) {
                     variant="permanent"
                     sx={{
                         display: { xs: 'none', sm: 'block' },
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                        '& .MuiDrawer-paper': {
+                            boxSizing: 'border-box',
+                            width: drawerWidth,
+                        },
                     }}
                     open
                 >
@@ -277,20 +203,37 @@ function ResponsiveDrawer(props) {
             </Box>
             <Box
                 component="main"
-                sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` }, backgroundColor: '#E8EAED' }}
+                sx={{
+                    flexGrow: 1,
+                    p: 3,
+                    width: { sm: `calc(100% - ${drawerWidth}px)` },
+                    backgroundColor: '#E8EAED',
+                }}
             >
                 <Toolbar />
                 {children}
-                <PopupState variant="popover" popupId="demo-popup-popover" onClick={SpeechRecognition.startListening}>
+                <PopupState
+                    variant="popover"
+                    popupId="demo-popup-popover"
+                    onClick={SpeechRecognition.startListening}
+                >
                     {(popupState) => (
                         <div onClick={SpeechRecognition.startListening}>
-                            <Fab sx={{
-                                position: 'fixed',
-                                bottom: 16,
-                                right: 16,
-                            }} aria-label='ADD' {...bindTrigger(popupState)}>
-
-                                <img src={googleassistant} width={70} height={70} onClick={SpeechRecognition.startListening} />
+                            <Fab
+                                sx={{
+                                    position: 'fixed',
+                                    bottom: 16,
+                                    right: 16,
+                                }}
+                                aria-label="ADD"
+                                {...bindTrigger(popupState)}
+                            >
+                                <img
+                                    src={googleassistant}
+                                    width={70}
+                                    height={70}
+                                    onClick={SpeechRecognition.startListening}
+                                />
                             </Fab>
                             <Popover
                                 {...bindPopover(popupState)}
@@ -303,19 +246,20 @@ function ResponsiveDrawer(props) {
                                     horizontal: 'center',
                                 }}
                             >
-                                <Typography sx={{ p: 2 }}>{transcript ? transcript : 'Tell us your problem'}</Typography>
+                                <Typography sx={{ p: 2 }}>
+                                    {transcript ? transcript : 'Tell us your problem'}
+                                </Typography>
                             </Popover>
                         </div>
                     )}
                 </PopupState>
-
             </Box>
         </Box>
-    );
+    )
 }
 
 ResponsiveDrawer.propTypes = {
-  windows: PropTypes.func,
+    windows: PropTypes.func,
 }
 
 export default ResponsiveDrawer
