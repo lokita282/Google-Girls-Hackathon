@@ -1,17 +1,19 @@
 import React from 'react'
 import Sidebar from '../Components/Sidebar'
 import Faqs from '../Components/Faqs'
-import ContactUs from '../Components/ContactUs'
 import Typography from '@mui/material/Typography'
+import Connect from '../Components/Connect'
 
 const Support = () => {
   return (
     <div>
       <Sidebar>
-        <Typography fontWeight="bold" variant="h5" color="initial" sx={{paddingBottom: '10px'}}>FAQs</Typography>
-        <Faqs />
-        <Typography fontWeight="bold" variant="h5" color="initial" sx={{paddingBottom: '10px'}}>Contact Us</Typography>
-        <ContactUs />
+        <div>
+          <Typography fontWeight="bold" variant="h5" color="initial" sx={{ paddingBottom: '10px' }}>FAQs</Typography>
+          <Faqs />
+          <Typography fontWeight="bold" variant="h5" color="initial" sx={{ paddingBottom: '10px', marginTop: '5%' }}>Contact Us</Typography>
+          <Connect />
+        </div>
       </Sidebar>
     </div>
   )
