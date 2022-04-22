@@ -11,6 +11,7 @@ import {
 import Dashboard from './Pages/Dashboard';
 import Food from './Pages/TechAssistance/Food';
 import Task from './Pages/Task';
+import Support from './Pages/Support';
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/food" element={<Food />} />
-          <Route path="/tasks" element={<Task />} />
+          <Route path="/task" element={<Task />} />
+          <Route path="/support" element={<Support />} />
         </Routes>
       </Router>
       {/* <Dashboard /> */}

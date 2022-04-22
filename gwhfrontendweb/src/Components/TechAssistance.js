@@ -19,7 +19,7 @@ function TechAssistance() {
             <h4 style={{ marginTop: '5%' }}>Technical Assistance</h4>
             <Grid container>
                 <Grid item md={2} className='center'>
-                    <Button ><img src={food} onClick={navigate('/food')}/></Button>
+                    <Button href="/food" ><img src={food} onClick={navigate('/food')}/></Button>
                     <p className='serviceName'>Food</p>
                 </Grid>
                 <Grid item md={2} className='center'>

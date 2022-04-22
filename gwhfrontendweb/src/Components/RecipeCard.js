@@ -10,18 +10,24 @@ import recipes from '../Images/recipes.png'
 
 export default function MultiActionAreaCard() {
   return (
-    <Card sx={{ maxWidth: 425, padding: '30px 70px' }}>
+    <Card sx={{ minWidth: '482px', padding: '30px 70px' }}>
       <CardActionArea>
-        <CardMedia component="img" image={food} alt="food" />
+        <CardMedia
+          sx={{ objectFit: 'contain' }}
+          height="180px"
+          component="img"
+          image={food}
+          alt="food"
+        />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography align="center" gutterBottom variant="h5" component="div">
             Search for recipes
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
         <Box sx={{ alignItems: 'center', width: '100%' }}>
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" sx={{ marginLeft: '25%' }}>
             <img src={youtube} />
           </Button>
           <Button size="small" color="primary">
