@@ -13,7 +13,7 @@ function TechAssistance() {
     return (
         <>
             <h4 style={{ marginTop: '5%' }}>Technical Assistance</h4>
-            <Grid container>
+            <Grid spacing={5} container>
                 <Grid item md={2} className='center'>
                     <img src={food} />
                     <p className='serviceName'>Food</p>
